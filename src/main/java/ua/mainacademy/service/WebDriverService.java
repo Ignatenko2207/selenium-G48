@@ -2,16 +2,17 @@ package ua.mainacademy.service;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import ua.mainacademy.helper.PathHelper;
 import ua.mainacademy.util.TimeoutUtil;
 
-import java.time.temporal.TemporalUnit;
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverService {
 
     public static WebDriver getWebDriver(String resource) {
-        System.setProperty("webdriver.chrome.driver", "D:\\test\\chromedriver.exe");
+        PathHelper pathHelper = new PathHelper();
+        System.setProperty("webdriver.chrome.driver", pathHelper.getChropmeDriverPath());
         WebDriver driver =  new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
